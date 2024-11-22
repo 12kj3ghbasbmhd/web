@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<title>albert-AI</title>
+<link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --color: #ffffff; /* White text for contrast */
+        --background: #000000; /* Black background */
+        --size: 3;
+        --animation: terminal-blink;
+        --primary-bg: #000000;
+        --primary-color: white;
+    }
+
+    body {
+        background-color: var(--background);
+        color: var(--color);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: 'Orbitron', monospace;
+        flex-direction: column;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #111;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .navbar a {
+        color: var(--color);
+        text-decoration: none;
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    .navbar a:hover {
+        background-color: #444;
+        border-radius: 5px;
+    }
+
+    .terminal-container {
+        width: 70%; /* Increased width */
+        max-width: 900px; /* Increased max width */
+        height: 70vh; /* Increased height */
+        padding: 20px;
+        background-color: var(--background);
+        color: var(--color);
+        font-size: 1.4rem; /* Larger font size */
+        overflow: auto;
+        border: 2px solid var(--color); /* Border for styling */
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+    <!-- Navigation Bar from How to Buy -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="htb.html">How to Buy</a>
+        <a href="faq.html">FAQ</a>
+    </div>
+
+    <div class="terminal-container">
+        <div class="terminal" id="terminal"></div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+<script>
+        $('#terminal').terminal(function (command) {
+            if (command === 'x') {
+                window.open('https://x.com/MineBombs', '_blank'); 
+            } else if (command === 'telegram') {
+                window.open('https://t.me/MineBombs', '_blank');
+            } else if (command === 'help') {
+                this.echo('commands:');
+                this.echo(' x');
+                this.echo(' telegram');
+                this.echo(' ca');
+                this.echo(' clear');
+            } else if (command === 'ca') {
+                this.echo('pending...');
+            } else if (command.trim() !== '') {
+                this.echo('error?');
+            }
+        }, {
+            greetings: 'Type "help".',
+            prompt: '$ ',
+            autocomplete: ['x', 'tg', 'ca', 'clear', '/help'],
+        });
+</script>
+</body>
+</html>
